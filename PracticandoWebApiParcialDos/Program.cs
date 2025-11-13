@@ -1,4 +1,21 @@
+///////////////////////////////////////////////
+// USINGS
+using Microsoft.EntityFrameworkCore;
+using PracticandoWebApiParcialDos.Data;
+using PracticandoWebApiParcialDos.Services;
+///////////////////////////////////////////////
+
 var builder = WebApplication.CreateBuilder(args);
+
+///////////////////////////////////////////////
+// NUEVO: AGREGAMOS CADENA DE CONEXION Y CONTEXTO
+builder.Services.AddDbContext<AppDbContext>(
+    options => options.UseInMemoryDatabase("VentasDB"));
+
+// REGISTRAMOS LOS SERVICIOS A USAR
+builder.Services.AddScoped<RolService>();
+
+///////////////////////////////////////////////
 
 // Add services to the container.
 
